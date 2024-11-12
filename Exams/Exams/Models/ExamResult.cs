@@ -1,4 +1,6 @@
-﻿namespace Exams.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Exams.Models
 {
     public class ExamResult
     {
@@ -10,6 +12,7 @@
         public int SubjectId { get; set; }
         public Subject Subject { get; set; }
         public int ExamTicketNumber { get; set; }
+        [Range(0, 10, ErrorMessage = "Неверная оценка")]
         public int Mark {  get; set; }
     }
 }
