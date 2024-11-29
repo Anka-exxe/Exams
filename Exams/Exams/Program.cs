@@ -18,6 +18,6 @@ using (var scope = app.Services.CreateScope())
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Exams}/{action=Index}");
+    pattern: "{controller=Exam}/{action=Index}");
 
 app.Run();

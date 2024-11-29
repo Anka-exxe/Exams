@@ -1,0 +1,46 @@
+﻿@model Exams.ViewModels.ExamResultViewModel
+
+@{
+    ViewData["Title"] = "Добавление результата экзамена";
+}
+
+<h2>Добавление результата экзамена</h2>
+
+<form asp-action="AddExam" asp-controller="Exam" method="post" asp-antiforgery="true">
+    <div>
+        <p>
+            <label asp-for="StudentId">Студент</label>
+            <select asp-for="StudentId" asp-items="ViewBag.Students" required></select>
+            <span asp-validation-for="StudentId" class="text-danger"></span> <!-- Отображение ошибок -->
+        </p>
+        <p>
+            <label asp-for="TeacherId">Преподаватель</label>
+            <select asp-for="TeacherId" asp-items="ViewBag.Teachers" required></select>
+            <span asp-validation-for="TeacherId" class="text-danger"></span> <!-- Отображение ошибок -->
+        </p>
+        <p>
+            <label asp-for="SubjectId">Предмет</label>
+            <select asp-for="SubjectId" asp-items="ViewBag.Subjects" required></select>
+            <span asp-validation-for="SubjectId" class="text-danger"></span> <!-- Отображение ошибок -->
+        </p>
+        <p>
+            <label asp-for="ExamTicketNumber">Номер билета</label>
+            <input type="number" asp-for="ExamTicketNumber" required />
+            <span asp-validation-for="ExamTicketNumber" class="text-danger"></span> <!-- Отображение ошибок -->
+        </p>
+        <p>
+            <label asp-for="Mark">Оценка</label>
+            <input type="number" asp-for="Mark" />
+            <span asp-validation-for="Mark" class="text-danger"></span> <!-- Отображение ошибок -->
+        </p>
+        <p>
+            <input type="submit" value="Сохранить" class="btn btn-success" />
+        </p>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
